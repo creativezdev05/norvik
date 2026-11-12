@@ -6,12 +6,13 @@ import { TiLocationArrow } from "react-icons/ti";
 
 import Button from "./Button";
 
-const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
+const navItems = ["Studio", "Capabilities", "Work", "Pipeline", "Contact"];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Refs for audio and navigation container
   const audioElementRef = useRef(null);
@@ -21,17 +22,21 @@ const NavBar = () => {
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
+  // Smooth scroll handler for nav items
+  const handleNavClick = (e, targetId) => {
+    if (e) e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState(null, "", `#${targetId}`);
+    }
+  };
+
   // Toggle audio and visual indicator
   const toggleAudioIndicator = () => {
     setIsAudioPlaying((prev) => !prev);
     setIsIndicatorActive((prev) => !prev);
   };
-
-  useEffect(() => {
-    if (isAudioPlaying) {
-        audioElementRef.current.play();
-    }
-  }, []);
 
   // Manage audio playback
   useEffect(() => {
@@ -71,19 +76,27 @@ const NavBar = () => {
   return (
     <div
       ref={navContainerRef}
-      className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
+      className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 before:pointer-events-none before:absolute before:inset-x-0 before:-top-4 before:h-28 before:bg-gradient-to-b before:from-black/75 before:via-black/35 before:to-transparent before:content-[''] sm:inset-x-6"
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
         <nav className="flex size-full items-center justify-between p-4">
           {/* Logo and Product button */}
           <div className="flex items-center gap-7">
-            <img src="/img/logo.png" alt="logo" className="w-10" />
+            <a
+              href="#hero"
+              onClick={(e) => handleNavClick(e, "hero")}
+              aria-label="Norvik Studios home"
+              className="flex size-16 cursor-pointer items-center justify-center rounded-full p-2 shadow-lg transition-transform duration-300 hover:scale-105 sm:size-[4.5rem]"
+            >
+              <img src="/img/logo.png" alt="Norvik Studios" className="size-12 object-contain sm:size-14" />
+            </a>
 
             <Button
               id="product-button"
-              title="Products"
+              title="Our work"
               rightIcon={<TiLocationArrow />}
               containerClass="bg-[#dfdff2] md:flex hidden items-center justify-center gap-1"
+              onClick={(e) => handleNavClick(e, "work")}
             />
           </div>
 
@@ -94,6 +107,7 @@ const NavBar = () => {
                 <a
                   key={index}
                   href={`#${item.toLowerCase()}`}
+                  onClick={(e) => handleNavClick(e, item.toLowerCase())}
                   className="nav-hover-btn"
                 >
                   {item}
@@ -123,8 +137,40 @@ const NavBar = () => {
                 />
               ))}
             </button>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              className="ml-6 flex items-center justify-center text-[#dfdff2] md:hidden focus:outline-none"
+              aria-label="Toggle navigation menu"
+            >
+              {isMobileMenuOpen ? (
+                <span className="text-xl font-bold">✕</span>
+              ) : (
+                <span className="text-xl font-bold">☰</span>
+              )}
+            </button>
           </div>
         </nav>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="absolute top-16 left-0 w-full rounded-lg bg-black/95 p-4 backdrop-blur-md border border-white/10 md:hidden flex flex-col items-center gap-4 shadow-lg">
+            {navItems.map((item, index) => (
+              <a
+                key={index}
+                href={`#${item.toLowerCase()}`}
+                onClick={(e) => {
+                  handleNavClick(e, item.toLowerCase());
+                  setIsMobileMenuOpen(false);
+                }}
+                className="font-general text-sm uppercase text-[#dfdff2] hover:text-white transition-colors py-1 cursor-pointer"
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+        )}
       </header>
     </div>
   );

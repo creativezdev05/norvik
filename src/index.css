@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   width: 100%;
   /* overflow-x: hidden; */
@@ -81,6 +85,11 @@ body {
     @apply absolute left-1/2 top-0 z-20 h-[60vh] w-96 origin-center -translate-x-1/2 overflow-hidden rounded-3xl md:w-[30vw];
   }
 
+  .about-details {
+    @apply absolute bottom-0 left-0 z-30 w-full bg-[#101014]/95 px-6 py-7 opacity-0 md:px-12 md:py-10;
+    visibility: hidden;
+  }
+
   .animated-title {
     @apply flex flex-col gap-1 text-6xl uppercase leading-[.8] text-[#dfdff2] sm:px-32 md:text-[5rem];
   }
@@ -102,6 +111,81 @@ body {
 
   .bento-title {
     @apply uppercase md:text-[55px] leading-[0.85] text-4xl font-thin font-zentry;
+  }
+
+  .bento-carousel-stage {
+    position: absolute;
+    inset: 0;
+    perspective: 1400px;
+    perspective-origin: 55% 40%;
+    transform-style: preserve-3d;
+  }
+
+  /* Travels across the FULL card via left/top (%, relative to stage) */
+  .bento-fly-card {
+    position: absolute;
+    width: clamp(7.5rem, 14vw, 13rem);
+    aspect-ratio: 9 / 16;
+    margin: 0;
+    transform-style: preserve-3d;
+    animation-name: bento-fly-move;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: left, top, opacity;
+  }
+
+  .bento-fly-spinner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-origin: right center;
+    transform-style: preserve-3d;
+    animation-name: bento-fly-spin;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+
+  .bento-fly-face {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(223, 223, 242, 0.2);
+    background: #111;
+    backface-visibility: hidden;
+    box-shadow:
+      0 22px 48px rgba(0, 0, 0, 0.55),
+      0 0 36px rgba(102, 80, 200, 0.14);
+  }
+
+  .bento-fly-face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .bento-fly-face::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      145deg,
+      rgba(180, 160, 255, 0.2),
+      transparent 42%,
+      rgba(0, 0, 0, 0.28) 100%
+    );
+    pointer-events: none;
+  }
+
+  .bento-fly-face--front {
+    transform: rotateY(0deg);
+  }
+
+  .bento-fly-face--back {
+    transform: rotateY(180deg);
   }
 
   .story-img-container {
@@ -165,6 +249,50 @@ body {
   100% {
     height: 4px;
     transform: translateY(-0px);
+  }
+}
+
+/* Path: top-right -> bottom-left across the whole stage */
+@keyframes bento-fly-move {
+  0% {
+    left: 88%;
+    top: -12%;
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  50% {
+    left: 38%;
+    top: 34%;
+    opacity: 1;
+  }
+  94% {
+    opacity: 1;
+  }
+  100% {
+    left: -18%;
+    top: 82%;
+    opacity: 0;
+  }
+}
+
+/*
+  Pivot on the RIGHT edge.
+  Start: left/front face visible
+  Mid: edge-on (almost a line)
+  End: right/back face fully visible
+  Anticlockwise around the vertical axis (negative rotateY)
+*/
+@keyframes bento-fly-spin {
+  0% {
+    transform: rotateY(18deg);
+  }
+  50% {
+    transform: rotateY(-90deg);
+  }
+  100% {
+    transform: rotateY(-180deg);
   }
 }
 
