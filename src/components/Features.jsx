@@ -52,9 +52,9 @@ const BentoCarousel = ({ images = [] }) => {
   const step = duration / cards.length;
 
   return (
-    <div className="bento-carousel absolute left-0 top-0 size-full overflow-hidden bg-[#05050a]">
-      <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_70%_40%,rgba(98,70,200,0.28),transparent_55%)]" />
-      <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-black via-black/55 to-transparent" />
+    <div className="bento-carousel absolute left-0 top-0 size-full overflow-hidden bg-navy">
+      <div className="pointer-events-none absolute inset-0 z-[2] bg-bento-glow" />
+      <div className="pointer-events-none absolute inset-0 z-[2] bg-bento-fade" />
 
       <div className="bento-carousel-stage absolute inset-0">
         {cards.map((image, index) => {
@@ -114,7 +114,7 @@ export const BentoCard = ({ images = [], title, description, isComingSoon }) => 
   return (
     <div className="relative size-full">
       <BentoCarousel images={images} />
-      <div className="relative z-10 flex size-full flex-col justify-between p-5 text-[#dfdff2]">
+      <div className="relative z-10 flex size-full flex-col justify-between p-5 text-mist-card">
         <div>
           <h1 className="bento-title special-font">{title}</h1>
           {description && (
@@ -128,14 +128,14 @@ export const BentoCard = ({ images = [], title, description, isComingSoon }) => 
             onMouseMove={handleMouseMove}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white/75"
+            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-navy px-5 py-2 text-xs uppercase text-mist/80"
           >
             {/* Radial gradient hover effect */}
             <div
               className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
               style={{
                 opacity: hoverOpacity,
-                background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
+                background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, var(--steel-glow), var(--navy-glow))`,
               }}
             />
             <TiLocationArrow className="relative z-20" />
@@ -148,14 +148,14 @@ export const BentoCard = ({ images = [], title, description, isComingSoon }) => 
 };
 
 const Features = () => (
-  <section id="capabilities" className="bg-black pb-52 scroll-mt-20">
+  <section id="capabilities" className="scroll-mt-20 bg-navy-deep pb-52 text-mist-card">
     <div id="features" />
     <div className="container mx-auto px-3 md:px-10">
       <div className="px-5 py-32">
-        <p className="font-circular-web text-lg text-[#dfdff2]">
+        <p className="font-circular-web text-lg text-mist-card">
           What we bring to the build
         </p>
-        <p className="max-w-md font-circular-web text-lg text-[#dfdff2] opacity-50">
+        <p className="max-w-md font-circular-web text-lg text-mist/70">
           A close-knit team with the range to take a game from its first playable moment through launch, optimization and ongoing support.
         </p>
       </div>
@@ -228,7 +228,7 @@ const Features = () => (
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_2">
-          <div className="flex size-full flex-col justify-between bg-violet-300 p-5 text-black">
+          <div className="flex size-full flex-col justify-between bg-steel-accent p-5 text-mist-card">
             <div>
               <h1 className="bento-title special-font max-w-56">Built to <b>r</b>un smooth.</h1>
               <p className="mt-4 max-w-64 font-circular-web text-sm">Device testing, performance tuning and porting that keep the experience feeling great across the target market.</p>

@@ -105,9 +105,9 @@ export default function ContactForm() {
   };
 
   return (
-    <div id="contact" className="scroll-mt-20 overflow-hidden bg-black px-6 py-24 text-[#dfdff2] md:px-12 md:py-32">
+    <div id="contact" className="scroll-mt-20 overflow-hidden bg-navy-deep px-6 py-24 text-mist-card md:px-12 md:py-32">
       <div className="mx-auto max-w-7xl">
-        <p className="mb-4 text-center font-general text-sm uppercase tracking-[0.16em] text-[#dfdff2]/80">
+        <p className="mb-4 text-center font-general text-sm uppercase tracking-[0.16em] text-mist/80">
           Let’s make something players love
         </p>
         <AnimatedTitle
@@ -116,12 +116,12 @@ export default function ContactForm() {
           className="text-5xl sm:text-7xl md:text-8xl"
         />
 
-        <div className="grid gap-12 border-t border-white/15 pt-10 md:grid-cols-[0.8fr_1.2fr] md:gap-20 md:pt-14">
+        <div className="grid gap-12 border-t border-mist/15 pt-10 md:grid-cols-[0.8fr_1.2fr] md:gap-20 md:pt-14">
           <div>
-            <p className="max-w-md font-circular-web text-lg leading-relaxed text-[#dfdff2]/75 md:text-xl">
+            <p className="max-w-md font-circular-web text-lg leading-relaxed text-mist/80 md:text-xl">
           A new game, a tricky system, or a pipeline ready to move faster? Tell us where you want to go and we’ll help map the way.
             </p>
-            <p className="mt-8 font-general text-sm uppercase tracking-[0.14em] text-[#dfdff2]/65">
+            <p className="mt-8 font-general text-sm uppercase tracking-[0.14em] text-mist/70">
               We usually reply within one business day.
             </p>
           </div>
@@ -129,24 +129,24 @@ export default function ContactForm() {
           <form onSubmit={handleSubmit} className="grid gap-7">
             <div className="grid gap-7 sm:grid-cols-2">
               <div className="grid gap-2">
-                <label htmlFor="contact-name" className="font-general text-sm uppercase tracking-widest text-[#dfdff2]/75">Name</label>
-                <input id="contact-name" type="text" value={name} onChange={(e) => setName(e.target.value)} required className="w-full border-b border-white/25 bg-transparent px-0 py-3 font-circular-web text-base text-white outline-none transition-colors placeholder:text-white/30 focus:border-[#dfdff2]" placeholder="Your name" />
+                <label htmlFor="contact-name" className="font-general text-sm uppercase tracking-widest text-mist/75">Name</label>
+                <input id="contact-name" type="text" value={name} onChange={(e) => setName(e.target.value)} required className="w-full border-b border-mist/25 bg-transparent px-0 py-3 font-circular-web text-base text-mist-card outline-none transition-colors placeholder:text-mist/40 focus:border-steel" placeholder="Your name" />
               </div>
               <div className="grid gap-2">
-                <label htmlFor="contact-email" className="font-general text-sm uppercase tracking-widest text-[#dfdff2]/75">Email</label>
-                <input id="contact-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full border-b border-white/25 bg-transparent px-0 py-3 font-circular-web text-base text-white outline-none transition-colors placeholder:text-white/30 focus:border-[#dfdff2]" placeholder="you@example.com" />
+                <label htmlFor="contact-email" className="font-general text-sm uppercase tracking-widest text-mist/75">Email</label>
+                <input id="contact-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full border-b border-mist/25 bg-transparent px-0 py-3 font-circular-web text-base text-mist-card outline-none transition-colors placeholder:text-mist/40 focus:border-steel" placeholder="you@example.com" />
               </div>
             </div>
             <div className="grid gap-2">
-              <label htmlFor="contact-subject" className="font-general text-sm uppercase tracking-widest text-[#dfdff2]/75">Subject</label>
-              <input id="contact-subject" type="text" value={subject} onChange={(e) => setSubject(e.target.value)} required className="w-full border-b border-white/25 bg-transparent px-0 py-3 font-circular-web text-base text-white outline-none transition-colors placeholder:text-white/30 focus:border-[#dfdff2]" placeholder="What can we help with?" />
+              <label htmlFor="contact-subject" className="font-general text-sm uppercase tracking-widest text-mist/75">Subject</label>
+              <input id="contact-subject" type="text" value={subject} onChange={(e) => setSubject(e.target.value)} required className="w-full border-b border-mist/25 bg-transparent px-0 py-3 font-circular-web text-base text-mist-card outline-none transition-colors placeholder:text-mist/40 focus:border-steel" placeholder="What can we help with?" />
             </div>
             <div className="grid gap-2">
-              <label htmlFor="contact-message" className="font-general text-sm uppercase tracking-widest text-[#dfdff2]/75">Message</label>
-              <textarea id="contact-message" value={message} onChange={(e) => setMessage(e.target.value)} required rows={4} className="w-full resize-y border-b border-white/25 bg-transparent px-0 py-3 font-circular-web text-base text-white outline-none transition-colors placeholder:text-white/30 focus:border-[#dfdff2]" placeholder="Share a few details about your project..." />
+              <label htmlFor="contact-message" className="font-general text-sm uppercase tracking-widest text-mist/75">Message</label>
+              <textarea id="contact-message" value={message} onChange={(e) => setMessage(e.target.value)} required rows={4} className="w-full resize-y border-b border-mist/25 bg-transparent px-0 py-3 font-circular-web text-base text-mist-card outline-none transition-colors placeholder:text-mist/40 focus:border-steel" placeholder="Share a few details about your project..." />
             </div>
 
-            {status === 'loading' && <p role="status" className="font-circular-web text-sm text-[#dfdff2]/70">Encrypting data &amp; sending securely...</p>}
+            {status === 'loading' && <p role="status" className="font-circular-web text-sm text-mist/70">Encrypting data &amp; sending securely...</p>}
             {error && <p role="alert" className="font-circular-web text-sm text-red-300">{error}</p>}
             {submitted && <p role="status" className="font-circular-web text-sm text-emerald-300">Form encrypted and sent safely!</p>}
 

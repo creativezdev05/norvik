@@ -47,7 +47,7 @@ const Pipeline = () => {
   };
 
   return (
-    <div id="pipeline" className="min-h-dvh w-full overflow-hidden scroll-mt-20 bg-black text-[#dfdff2]">
+    <div id="pipeline" className="min-h-dvh w-full scroll-mt-20 overflow-hidden bg-navy-deep text-mist-card">
       <div id="prologue" />
       <div className="flex size-full flex-col items-center py-10 pb-24">
         <p className="font-general text-xs uppercase tracking-[0.16em] md:text-sm">
@@ -95,10 +95,10 @@ const Pipeline = () => {
 
         <div className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
           <div className="flex h-full w-fit flex-col items-center md:items-start">
-            <h2 className="font-zentry text-2xl uppercase tracking-wide text-cyan-300 md:text-3xl">
+            <h2 className="font-zentry text-2xl uppercase tracking-wide text-steel md:text-3xl">
               Five stages, no guesswork.
             </h2>
-            <p className="mt-3 max-w-sm text-center font-circular-web text-[#dfdff2] md:text-start">
+            <p className="mt-3 max-w-sm text-center font-circular-web text-mist md:text-start">
               Every project follows the same disciplined path from idea to a live, earning title.
             </p>
             <Button
@@ -118,7 +118,7 @@ const Pipeline = () => {
             <div className="pointer-events-none absolute left-[10%] right-[10%] top-[11px] h-[2px] bg-white/20" aria-hidden="true">
               {/* Animated Progress Fill Line */}
               <div
-                className="h-full bg-cyan-300 transition-[width] duration-500 ease-out"
+                className="h-full bg-steel transition-[width] duration-500 ease-out"
                 style={{ 
                   width: activeStage < 0 ? "0%" : `${(activeStage / (stages.length - 1)) * 100}%` 
                 }}
@@ -143,26 +143,26 @@ const Pipeline = () => {
                   tabIndex={0}
                   onMouseEnter={() => setActiveStage(index)}
                   aria-current={activeStage === index ? "step" : undefined}
-                  className="group relative z-10 cursor-pointer rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-8 focus-visible:ring-offset-black"
+                  className="focus-ring-steel group relative z-10 cursor-pointer rounded-sm outline-none"
                 >
                   {/* Circle Step Marker */}
                   <div className="mb-7 flex justify-center">
                     <span
                       className={`flex size-6 items-center justify-center rounded-full border transition-colors duration-300 ${
-                        activeStage >= index ? "border-cyan-300 bg-cyan-300" : "border-white/40 bg-black"
+                        activeStage >= index ? "border-steel bg-steel" : "border-mist/40 bg-navy-deep"
                       }`}
                     >
-                      <span className={`size-1.5 rounded-full ${activeStage >= index ? "bg-black" : "bg-white/40"}`} />
+                      <span className={`size-1.5 rounded-full ${activeStage >= index ? "bg-navy" : "bg-mist/40"}`} />
                     </span>
                   </div>
 
                   {/* Content Below */}
                   <div className="border-t border-white/20 pt-4 text-center">
-                    <span className="font-general text-xs tracking-wider text-cyan-300">{number}</span>
-                    <h3 className={`mt-2 font-zentry text-xl uppercase leading-none transition-colors duration-300 lg:text-2xl ${activeStage === index ? "text-cyan-300" : "text-[#dfdff2]"}`}>
+                    <span className="font-general text-xs tracking-wider text-steel">{number}</span>
+                    <h3 className={`mt-2 font-zentry text-xl uppercase leading-none transition-colors duration-300 lg:text-2xl ${activeStage === index ? "text-steel" : "text-mist-card"}`}>
                       {title}
                     </h3>
-                    <p className={`mt-3 font-circular-web text-sm leading-relaxed transition-colors duration-300 ${activeStage === index ? "text-white" : "text-white/60"}`}>
+                    <p className={`mt-3 font-circular-web text-sm leading-relaxed transition-colors duration-300 ${activeStage === index ? "text-mist-card" : "text-mist/60"}`}>
                       {description}
                     </p>
                   </div>

@@ -85,7 +85,7 @@ const Hero = () => {
   return (
     <div id="hero" className="relative h-dvh w-full overflow-x-hidden">
       {loading && (
-        <div className="flex-center absolute z-[100] h-dvh w-full overflow-hidden bg-violet-50">
+        <div className="flex-center absolute z-[100] h-dvh w-full overflow-hidden bg-mist">
           {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
           <div className="three-body">
             <div className="three-body__dot"></div>
@@ -97,7 +97,7 @@ const Hero = () => {
 
       <div
         id="video-frame"
-        className="relative z-10 h-dvh w-full overflow-hidden rounded-lg bg-blue-75"
+        className="relative z-10 h-dvh w-full overflow-hidden rounded-lg bg-hero"
       >
         <div>
           <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
@@ -125,7 +125,7 @@ const Hero = () => {
             loop
             muted
             id="next-video"
-            className="absolute-center invisible absolute z-20 size-64 bg-black object-contain object-center"
+            className="absolute-center invisible absolute z-20 size-64 bg-navy object-contain object-center"
             onLoadedData={handleVideoLoad}
           />
           <video
@@ -135,27 +135,27 @@ const Hero = () => {
             autoPlay
             loop
             muted
-            className="absolute left-0 top-0 size-full bg-black object-contain object-center"
+            className="absolute left-0 top-0 size-full bg-navy object-contain object-center"
             onLoadedData={handleVideoLoad}
           />
         </div>
 
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-30 bg-[linear-gradient(135deg,rgba(0,0,0,1)_0%,rgba(0,0,0,0.72)_32%,rgba(0,0,0,0.36)_58%,transparent_72%),linear-gradient(315deg,rgba(0,0,0,0.82)_0%,rgba(0,0,0,0.52)_30%,rgba(0,0,0,0.16)_56%,transparent_72%)]"
+          className="pointer-events-none absolute inset-0 z-30 bg-hero-shade"
         />
 
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-[#dfdff2]">
+        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-mist-card">
           G<b>A</b>MING
         </h1>
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font hero-heading text-[#dfdff2]">
+            <h1 className="special-font hero-heading text-mist-card">
               redefi<b>n</b>e
             </h1>
 
-            <p className="mb-5 max-w-64 font-robert-regular text-[#dfdff2]">
+            <p className="mb-5 max-w-64 font-robert-regular text-mist">
               We design, build and ship <br /> games players love to play.
             </p>
 
@@ -163,14 +163,14 @@ const Hero = () => {
               id="watch-trailer"
               title="Explore our work"
               leftIcon={<TiLocationArrow />}
-              containerClass="bg-yellow-300 flex-center gap-1"
+              containerClass="flex-center gap-1"
               onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })}
             />
           </div>
         </div>
       </div>
 
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
+      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-ink">
         G<b>A</b>MING
       </h1>
     </div>

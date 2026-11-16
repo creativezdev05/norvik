@@ -45,20 +45,20 @@ const About = () => {
   });
 
   return (
-    <div id="studio" className="min-h-screen w-full overflow-hidden scroll-mt-20">
+    <div id="studio" className="min-h-screen w-full overflow-hidden scroll-mt-20 bg-mist text-ink">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
-        <p className="font-general text-xs uppercase tracking-[0.16em] md:text-sm">
+        <p className="font-general text-xs uppercase tracking-[0.16em] text-ink-muted md:text-sm">
           Independent game development · MENA + worldwide
         </p>
 
         <AnimatedTitle
           title="Agile structure. <br /> Comprehensive delivery. <b>Strategic insight.</b>"
-          containerClass="mt-5 w-full !text-black text-center"
+          containerClass="mt-5 w-full text-ink text-center"
         />
 
-        <div className="about-subtext">
-          <p>We make games built to keep players coming back.</p>
-          <p className="text-gray-500">From first playable prototype to launch and live-ops, our team brings design, engineering, art and production together under one roof.</p>
+        <div className="about-subtext text-ink-muted">
+          <p className="text-ink">We make games built to keep players coming back.</p>
+          <p>From first playable prototype to launch and live-ops, our team brings design, engineering, art and production together under one roof.</p>
         </div>
       </div>
 
@@ -74,22 +74,22 @@ const About = () => {
         <div className="about-details" aria-label="About Norvik Studios">
           <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1.2fr_0.8fr] md:gap-14">
             <div>
-              <p className="mb-3 font-general text-xs uppercase tracking-[0.18em] text-cyan-300">Norvik Studios</p>
-              <h2 className="mb-4 font-zentry text-3xl uppercase leading-tight text-white md:text-5xl">
+              <p className="mb-3 font-general text-xs uppercase tracking-[0.18em] text-steel">Norvik Studios</p>
+              <h2 className="mb-4 font-zentry text-3xl uppercase leading-tight text-mist-card md:text-5xl">
                 Agile structure. Comprehensive delivery. Strategic insight.
               </h2>
-              <p className="max-w-2xl font-circular-web text-sm leading-relaxed text-white/75 md:text-base">
+              <p className="max-w-2xl font-circular-web text-sm leading-relaxed text-mist/80 md:text-base">
                 Norvik Studios is not a large, faceless outsourcing shop. We&apos;re a tight, founder-led team that moves like a small studio and delivers like a full production house — game design, engineering, art direction and live-ops under one roof.
               </p>
-              <p className="mt-3 max-w-2xl font-circular-web text-sm leading-relaxed text-white/75 md:text-base">
+              <p className="mt-3 max-w-2xl font-circular-web text-sm leading-relaxed text-mist/80 md:text-base">
                 Based in the MENA region and working with clients globally, we specialise in mobile-first experiences built in Unity: racing, action, survival, and puzzle titles engineered to perform on real-world devices, not just showreels.
               </p>
             </div>
             <dl className="grid grid-cols-2 content-start gap-x-6 gap-y-4 font-circular-web text-sm">
               {studioFacts.map(([label, value]) => (
-                <div key={label} className="border-t border-white/20 pt-3">
-                  <dt className="mb-1 text-xs uppercase tracking-wider text-white/45">{label}</dt>
-                  <dd className="text-white">{value}</dd>
+                <div key={label} className="border-t border-mist/20 pt-3">
+                  <dt className="mb-1 text-xs uppercase tracking-wider text-mist/55">{label}</dt>
+                  <dd className="text-mist-card">{value}</dd>
                 </div>
               ))}
             </dl>

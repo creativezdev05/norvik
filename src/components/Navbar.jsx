@@ -76,7 +76,7 @@ const NavBar = () => {
   return (
     <div
       ref={navContainerRef}
-      className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 before:pointer-events-none before:absolute before:inset-x-0 before:-top-4 before:h-28 before:bg-gradient-to-b before:from-black/75 before:via-black/35 before:to-transparent before:content-[''] sm:inset-x-6"
+      className="fixed inset-x-0 top-4 z-50 h-16 rounded-lg border border-white/10 bg-navy transition-all duration-700 sm:inset-x-6"
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
         <nav className="flex size-full items-center justify-between p-4">
@@ -95,7 +95,7 @@ const NavBar = () => {
               id="product-button"
               title="Our work"
               rightIcon={<TiLocationArrow />}
-              containerClass="bg-[#dfdff2] md:flex hidden items-center justify-center gap-1"
+              containerClass="hidden items-center justify-center gap-1 md:flex"
               onClick={(e) => handleNavClick(e, "work")}
             />
           </div>
@@ -141,7 +141,7 @@ const NavBar = () => {
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-              className="ml-6 flex items-center justify-center text-[#dfdff2] md:hidden focus:outline-none"
+              className="ml-6 flex items-center justify-center text-mist-card focus:outline-none md:hidden"
               aria-label="Toggle navigation menu"
             >
               {isMobileMenuOpen ? (
@@ -155,7 +155,7 @@ const NavBar = () => {
 
         {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
-          <div className="absolute top-16 left-0 w-full rounded-lg bg-black/95 p-4 backdrop-blur-md border border-white/10 md:hidden flex flex-col items-center gap-4 shadow-lg">
+          <div className="absolute left-0 top-16 flex w-full flex-col items-center gap-4 rounded-lg border border-white/10 bg-navy/95 p-4 shadow-lg backdrop-blur-md md:hidden">
             {navItems.map((item, index) => (
               <a
                 key={index}
@@ -164,7 +164,7 @@ const NavBar = () => {
                   handleNavClick(e, item.toLowerCase());
                   setIsMobileMenuOpen(false);
                 }}
-                className="font-general text-sm uppercase text-[#dfdff2] hover:text-white transition-colors py-1 cursor-pointer"
+                className="cursor-pointer py-1 font-general text-sm uppercase text-mist-card transition-colors hover:text-white"
               >
                 {item}
               </a>

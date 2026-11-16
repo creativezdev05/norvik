@@ -31,21 +31,21 @@ const projects = [
 ];
 
 const Story = () => (
-  <section id="work" className="scroll-mt-20 bg-[#dfdff0] px-5 py-24 text-black md:px-12 md:py-32">
+  <section id="work" className="scroll-mt-20 bg-mist px-5 py-24 text-ink md:px-12 md:py-32">
     <div className="mx-auto max-w-7xl">
       <div className="mb-12 flex flex-col gap-5 md:mb-16 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="mb-5 font-general text-sm uppercase tracking-[0.16em] text-black/65">Selected work · different worlds, same craft</p>
+          <p className="mb-5 font-general text-sm uppercase tracking-[0.16em] text-ink-muted">Selected work · different worlds, same craft</p>
           <h2 className="special-font max-w-3xl font-zentry text-5xl uppercase leading-[.85] sm:text-7xl md:text-8xl">Worlds we <b>m</b>ake.</h2>
         </div>
-        <p className="max-w-sm font-circular-web text-base leading-relaxed text-black/65">From high-speed racing to tense survival, we build the systems and moments that keep every genre feeling alive.</p>
+        <p className="max-w-sm font-circular-web text-base leading-relaxed text-ink-muted">From high-speed racing to tense survival, we build the systems and moments that keep every genre feeling alive.</p>
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         {projects.map((project) => (
-          <article key={project.number} className="group relative min-h-[25rem] overflow-hidden rounded-md bg-black text-[#dfdff2] md:min-h-[34rem]">
+          <article key={project.number} className="group relative min-h-[25rem] overflow-hidden rounded-md bg-navy-deep text-mist-card md:min-h-[34rem]">
             <OptimizedImage srcWebp={project.video} srcFallback ={project.video}  className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/90 via-black/30 to-black/100" />
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-work-scrim" />
             <div className="relative z-10 flex min-h-[25rem] flex-col justify-between p-6 md:min-h-[34rem] md:p-8">
               <div className="flex items-center justify-between font-general text-xs uppercase tracking-[0.16em] text-white/80">
                 <span>{project.genre}</span><span>{project.number} / 04</span>

@@ -14,6 +14,7 @@
     "clsx": "^2.1.1",
     "firebase": "^13.1.0",
     "forge": "^2.3.0",
+    "framer-motion": "^14.13.0",
     "gsap": "^3.12.5",
     "node-forge": "^1.4.2",
     "react": "^18.3.1",

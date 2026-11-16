@@ -6,7 +6,7 @@ import Story from "./components/Story";
 import Pipeline from "./components/Pipeline";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-
+import ExplodedAnimation from './components/ExplodedAnimation';
 const App = () => {
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden">
@@ -16,6 +16,7 @@ const App = () => {
       <Features />
       <Story />
       <Pipeline />
+      {/* <ExplodedAnimation /> */}
       <Contact />
       <Footer />
     </main>

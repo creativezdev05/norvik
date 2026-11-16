@@ -8,7 +8,7 @@ const Button = ({ id, title, rightIcon, leftIcon, containerClass, onClick, type 
       type={type}
       disabled={disabled}
       className={clsx(
-        "group relative z-10 w-fit cursor-pointer overflow-hidden rounded-full bg-[#dfdff2] px-7 py-3 text-black",
+        "group relative z-10 w-fit cursor-pointer overflow-hidden rounded-full bg-mist-card px-7 py-3 text-ink",
         containerClass
       )}
     >
