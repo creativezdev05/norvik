@@ -163,11 +163,11 @@ const Features = () => (
       <BentoTilt className="bento-tilt_1 relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
         <BentoCard
           images={[
-            "videos/feature-1.png",
-            "videos/feature-2.png",
-            "videos/feature-3.png",
-            "videos/feature-4.png",
-            "videos/feature-5.png",
+            "videos/feature-1.webp",
+            "videos/feature-2.webp",
+            "videos/feature-3.webp",
+            "videos/feature-4.webp",
+            "videos/feature-5.webp",
           ]}
           title={
             <>
@@ -188,8 +188,8 @@ const Features = () => (
             </div>
             <div className="relative mt-4 min-h-0 flex-1">
               <OptimizedImage
-                srcWebp="videos/feature-2.png"
-                srcFallback="videos/feature-2.png"
+                srcWebp="videos/feature-2.webp"
+                srcFallback="videos/feature-2.webp"
                 alt="Gameplay & AI"
                 className="absolute inset-0 size-full object-contain object-center"
               />
@@ -200,8 +200,8 @@ const Features = () => (
         <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
           <div className="relative size-full overflow-hidden text-white">
             <OptimizedImage
-              srcWebp="videos/feature-3.png"
-              srcFallback="videos/feature-3.png"
+              srcWebp="videos/feature-3.webp"
+              srcFallback="videos/feature-3.webp"
               alt="Art & VFX"
               className="absolute right-0 top-1/2 h-[88%] w-[58%] -translate-y-1/2 object-contain object-center"
             />
@@ -215,8 +215,8 @@ const Features = () => (
         <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
           <div className="relative size-full overflow-hidden text-white">
             <OptimizedImage
-              srcWebp="videos/feature-4.png"
-              srcFallback="videos/feature-4.png"
+              srcWebp="videos/feature-4.webp"
+              srcFallback="videos/feature-4.webp"
               alt="Live-Ops"
               className="absolute right-0 top-1/2 h-[88%] w-[58%] -translate-y-1/2 object-contain object-center"
             />
@@ -240,8 +240,8 @@ const Features = () => (
         <BentoTilt className="bento-tilt_2 relative">
           <div className="relative size-full overflow-hidden text-white">
             <OptimizedImage
-              srcWebp="videos/feature-5.png"
-              srcFallback="videos/feature-5.png"
+              srcWebp="videos/feature-5.webp"
+              srcFallback="videos/feature-5.webp"
               alt="Tools & automation"
               className="absolute right-0 top-1/2 h-[88%] w-[58%] -translate-y-1/2 object-contain object-center"
             />

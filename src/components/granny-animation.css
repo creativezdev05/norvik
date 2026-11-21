@@ -1,0 +1,74 @@
+@keyframes granny-left-hand {
+  from { background-position: 0 0; }
+  to { background-position: calc(100% * 8 / 7) 0; }
+}
+.granny-left-hand {
+  position: absolute;
+  left: 0%;
+  top: 39.22518%;
+  width: 53.21888%;
+  height: 60.77482%;
+  background-image: url("/granny/assets/left_hand_spritesheet.webp");
+  background-size: 800% 100%;
+  background-repeat: no-repeat;
+  animation: granny-left-hand 1.44s steps(8) infinite;
+  pointer-events: none;
+}
+
+@keyframes granny-right-hand {
+  from { background-position: 0 0; }
+  to { background-position: calc(100% * 8 / 7) 0; }
+}
+.granny-right-hand {
+  position: absolute;
+  left: 53.00429%;
+  top: 50.12107%;
+  width: 46.99571%;
+  height: 49.87893%;
+  background-image: url("/granny/assets/right_hand_spritesheet.webp");
+  background-size: 800% 100%;
+  background-repeat: no-repeat;
+  animation: granny-right-hand 1.44s steps(8) infinite;
+  pointer-events: none;
+}
+
+@keyframes granny-eyes-glow {
+  from { background-position: 0 0; }
+  to { background-position: calc(100% * 8 / 7) 0; }
+}
+.granny-eyes-glow {
+  position: absolute;
+  left: 43.99142%;
+  top: 16.22276%;
+  width: 16.30901%;
+  height: 15.49637%;
+  background-image: url("/granny/assets/eyes_glow_spritesheet.webp");
+  background-size: 800% 100%;
+  background-repeat: no-repeat;
+  animation: granny-eyes-glow 1.44s steps(8) infinite;
+  pointer-events: none;
+}
+
+.granny-viewport {
+  position: absolute;
+  inset: 0;
+  container-type: size;
+  overflow: hidden;
+}
+
+.granny-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100cqw, calc(100cqh * 466 / 413));
+  aspect-ratio: 466 / 413;
+  transform: translate(-50%, -50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .granny-left-hand,
+  .granny-right-hand,
+  .granny-eyes-glow {
+    animation: none;
+  }
+}

@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     watch: {
       // Windows often locks media while copying/editing; skip watching them.
-      ignored: ["**/public/videos/**"],
+      ignored: ["**/public/videos/**", "**/public/soccer/**", "**/public/hexa/**", "**/_upscale_work/**"],
     },
   },
 })

@@ -2,62 +2,54 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import { TiLocationArrow } from "react-icons/ti";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import Button from "./Button";
 import VideoPreview from "./VideoPreview";
+import ZombieGameAnimation from "./ZombieGameAnimation";
+import HexaGameAnimation from "./HexaGameAnimation";
+import SoccerKickAnimation from "./SoccerKickAnimation";
+import GrannyGameAnimation from "./GrannyGameAnimation";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState(1);
-  const [hasClicked, setHasClicked] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [transitionIndex, setTransitionIndex] = useState(null);
+  const nextImageRef = useRef(null);
 
-  const [loading, setLoading] = useState(true);
-  const [loadedVideos, setLoadedVideos] = useState(0);
-
-  const totalVideos = 4;
-  const nextVdRef = useRef(null);
-
-  const handleVideoLoad = () => {
-    setLoadedVideos((prev) => prev + 1);
+  const totalImages = 5;
+  const getImageSrc = (index) => {
+    if (index === 2) return "/soccer/striker-poster.jpg";
+    if (index === 3) return "/granny/assets/original_reference_frame.webp";
+    return `videos/hero-${index + 1}.webp`;
   };
 
-  useEffect(() => {
-    if (loadedVideos === totalVideos - 1) {
-      setLoading(false);
-    }
-  }, [loadedVideos]);
-
-  const handleMiniVdClick = () => {
-    setHasClicked(true);
-
-    setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
+  const handleHeroClick = () => {
+    if (transitionIndex !== null) return;
+    setTransitionIndex((currentIndex + 1) % totalImages);
   };
 
   useGSAP(
     () => {
-      if (hasClicked) {
-        gsap.set("#next-video", { visibility: "visible" });
-        gsap.to("#next-video", {
+      if (transitionIndex !== null) {
+        gsap.set(nextImageRef.current, { visibility: "visible" });
+        gsap.to(nextImageRef.current, {
           transformOrigin: "center center",
           scale: 1,
           width: "100%",
           height: "100%",
           duration: 1,
           ease: "power1.inOut",
-          onStart: () => nextVdRef.current.play(),
-        });
-        gsap.from("#current-video", {
-          transformOrigin: "center center",
-          scale: 0,
-          duration: 1.5,
-          ease: "power1.inOut",
+          onComplete: () => {
+            setCurrentIndex(transitionIndex);
+            setTransitionIndex(null);
+          },
         });
       }
     },
     {
-      dependencies: [currentIndex],
+      dependencies: [transitionIndex],
       revertOnUpdate: true,
     }
   );
@@ -80,82 +72,78 @@ const Hero = () => {
     });
   });
 
-  const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
-
   return (
     <div id="hero" className="relative h-dvh w-full overflow-x-hidden">
-      {loading && (
-        <div className="flex-center absolute z-[100] h-dvh w-full overflow-hidden bg-mist">
-          {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
-          <div className="three-body">
-            <div className="three-body__dot"></div>
-            <div className="three-body__dot"></div>
-            <div className="three-body__dot"></div>
-          </div>
-        </div>
-      )}
-
       <div
         id="video-frame"
         className="relative z-10 h-dvh w-full overflow-hidden rounded-lg bg-hero"
       >
         <div>
-          <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
+          <div
+            className="group mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg"
+            onClick={handleHeroClick}
+          >
             <VideoPreview>
-              <div
-                onClick={handleMiniVdClick}
-                className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
-              >
-                <video
-                  ref={nextVdRef}
-                  src={getVideoSrc((currentIndex % totalVideos) + 1)}
-                  loop
-                  muted
-                  id="current-video"
-                  className="size-64 origin-center object-contain object-center"
-                  onLoadedData={handleVideoLoad}
+              <div className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in group-hover:scale-100 group-hover:opacity-100">
+                <img
+                  src={getImageSrc((currentIndex + 1) % totalImages)}
+                  alt="Preview of the next hero image"
+                  className="size-64 origin-center object-cover object-center"
                 />
               </div>
+
             </VideoPreview>
           </div>
 
-          <video
-            ref={nextVdRef}
-            src={getVideoSrc(currentIndex)}
-            loop
-            muted
-            id="next-video"
-            className="absolute-center invisible absolute z-20 size-64 bg-navy object-contain object-center"
-            onLoadedData={handleVideoLoad}
-          />
-          <video
-            src={getVideoSrc(
-              currentIndex === totalVideos - 1 ? 1 : currentIndex
-            )}
-            autoPlay
-            loop
-            muted
-            className="absolute left-0 top-0 size-full bg-navy object-contain object-center"
-            onLoadedData={handleVideoLoad}
+          {currentIndex === 0 ? (
+            <ZombieGameAnimation />
+          ) : currentIndex === 1 ? (
+            <HexaGameAnimation />
+          ) : currentIndex === 2 ? (
+            <SoccerKickAnimation />
+          ) : currentIndex === 3 ? (
+            <GrannyGameAnimation />
+          ) : (
+            <img
+              src={getImageSrc(currentIndex)}
+              alt=""
+              className="absolute left-0 top-0 size-full bg-navy object-cover object-center"
+            />
+          )}
+
+          {transitionIndex !== null && (
+            <img
+              ref={nextImageRef}
+              src={getImageSrc(transitionIndex)}
+              alt=""
+              className="absolute-center invisible absolute z-20 size-64 bg-navy object-cover object-center"
+            />
+          )}
+
+          <button
+            type="button"
+            aria-label="Show the next hero image"
+            onClick={handleHeroClick}
+            disabled={transitionIndex !== null}
+            className="absolute inset-0 z-10 cursor-pointer disabled:cursor-default"
           />
         </div>
 
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-30 bg-hero-shade"
-        />
-
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-mist-card">
+        <h1 className="special-font hero-heading pointer-events-none absolute bottom-5 right-5 z-40 text-mist-card">
           G<b>A</b>MING
         </h1>
-
-        <div className="absolute left-0 top-0 z-40 size-full">
-          <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font hero-heading text-mist-card">
+        
+        <div className="pointer-events-none absolute left-0 top-0 z-40 size-full">
+          <div className="relative mt-24 w-max max-w-full px-5 sm:px-10">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-x-4 -inset-y-6 bg-hero-shade sm:-inset-x-8"
+            />
+            <h1 className="special-font hero-heading relative z-10 text-mist-card">
               redefi<b>n</b>e
             </h1>
 
-            <p className="mb-5 max-w-64 font-robert-regular text-mist">
+            <p className="relative z-10 mb-5 max-w-64 font-robert-regular text-mist">
               We design, build and ship <br /> games players love to play.
             </p>
 
@@ -163,14 +151,17 @@ const Hero = () => {
               id="watch-trailer"
               title="Explore our work"
               leftIcon={<TiLocationArrow />}
-              containerClass="flex-center gap-1"
-              onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })}
+              containerClass="pointer-events-auto relative z-10 flex-center gap-1"
+              onClick={(event) => {
+                event.stopPropagation();
+                document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+              }}
             />
           </div>
         </div>
       </div>
 
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-ink">
+      <h1 className="special-font hero-heading pointer-events-none absolute bottom-5 right-5 text-ink">
         G<b>A</b>MING
       </h1>
     </div>

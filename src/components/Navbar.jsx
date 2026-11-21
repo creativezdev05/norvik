@@ -67,7 +67,7 @@ const NavBar = () => {
 
   useEffect(() => {
     gsap.to(navContainerRef.current, {
-      y: isNavVisible ? 0 : -100,
+      y: isNavVisible ? 0 : -120,
       opacity: isNavVisible ? 1 : 0,
       duration: 0.2,
     });
@@ -76,7 +76,7 @@ const NavBar = () => {
   return (
     <div
       ref={navContainerRef}
-      className="fixed inset-x-0 top-4 z-50 h-16 rounded-lg border border-white/10 bg-navy transition-all duration-700 sm:inset-x-6"
+      className="fixed inset-x-0 top-4 z-50 h-20 rounded-lg border border-white/10 bg-navy transition-all duration-700 sm:inset-x-6"
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
         <nav className="flex size-full items-center justify-between p-4">
@@ -88,7 +88,7 @@ const NavBar = () => {
               aria-label="Norvik Studios home"
               className="flex size-16 cursor-pointer items-center justify-center rounded-full p-2 shadow-lg transition-transform duration-300 hover:scale-105 sm:size-[4.5rem]"
             >
-              <img src="/img/logo.png" alt="Norvik Studios" className="size-12 object-contain sm:size-14" />
+              <img src="/img/logo.webp" alt="Norvik Studios" className="size-12 object-contain sm:size-14" />
             </a>
 
             <Button
@@ -155,7 +155,7 @@ const NavBar = () => {
 
         {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
-          <div className="absolute left-0 top-16 flex w-full flex-col items-center gap-4 rounded-lg border border-white/10 bg-navy/95 p-4 shadow-lg backdrop-blur-md md:hidden">
+          <div className="absolute left-0 top-20 flex w-full flex-col items-center gap-4 rounded-lg border border-white/10 bg-navy/95 p-4 shadow-lg backdrop-blur-md md:hidden">
             {navItems.map((item, index) => (
               <a
                 key={index}

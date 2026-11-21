@@ -21,7 +21,7 @@ const Footer = () => {
         <div className="grid gap-12 border-b border-mist/15 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-8 md:py-16">
           <div>
             <a href="#hero" className="inline-flex items-center gap-3 font-zentry text-2xl uppercase tracking-wide text-mist-card">
-              <img src="/img/logo.png" alt="" className="w-9" /> Norvik Studios
+              <img src="/img/logo.webp" alt="" className="w-9" /> Norvik Studios
             </a>
             <p className="mt-5 max-w-sm font-circular-web text-sm leading-relaxed text-mist/70">Play. Create. Inspire. An independent game development studio building mobile games and interactive experiences from the MENA region for players everywhere.</p>
           </div>
